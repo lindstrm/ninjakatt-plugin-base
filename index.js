@@ -2,7 +2,7 @@ const fs = require('fs-extra');
 module.exports = class Base {
   constructor(path) {
     this.path = path;
-    this.name = path ? path.split('\\').pop() : '';
+    this.name = path ? path.split('-').pop() : '';
     this.checkRequiredProperties();
     this.settings = null;
     this.loadSettings();
