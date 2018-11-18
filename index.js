@@ -16,7 +16,7 @@ module.exports = class Base {
 
   loadSettings() {
     try {
-      const userSettingsFile = `${global.appRoot}/plugins.json`;
+      const userSettingsFile = global.settings;
       const user = fs.readJsonSync(userSettingsFile);
       const defaults = fs.readJsonSync(`${this.path}/settings.default.json`);
 
@@ -30,7 +30,7 @@ module.exports = class Base {
   }
 
   saveSettings(settings) {
-    const path = `${global.appRoot}/plugins.json`;
+    const path = global.settings;
     const settingsContent = fs.readJsonSync(path);
     settingsContent[this.name] = settings;
     fs.writeJsonSync(path, settingsContent, { spaces: 2 });
